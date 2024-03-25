@@ -1,0 +1,19 @@
+.class-scrolling{
+    position: absolute;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border: 30px;
+    box-shadow: 2px 3px black;
+}
+.state-scolling{
+    animation: keyscolling 9s linear infinite;
+}
+@keyframes Keyscolling {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
