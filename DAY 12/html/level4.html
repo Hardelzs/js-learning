@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4</title>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <p>Hardelz😎</p>
+            <span>❤🌹💋🍑</span>
+            <a href="index.html"><img src="images/home-icon.svg" id="image"></a>
+        <div class="name">
+            <p>The Memory Block is played by people around the world … Flip each card and find its pair until all tiles are matched. Take a moment to receive the powerful message of each tile</p>
+        </div>
+        </div>
+        <section>
+            <div class="game-status-details">
+                <div class="rating">
+        
+                </div>
+                <span class="move-counter" id="moveCounter"></span>
+            </div>
+
+        <table class="game-board">
+            <tbody class="game-grid">
+                <tr class="game-grid-row">
+                    <td class="game-card">
+                        <img class="game-card-img" src="images/1.jpg" alt="cake1">
+                    </td>
+                    <td class="game-card">
+                        <img class="game-card-img" src="images/2.jpg" alt="cake2">
+                    </td>
+                    <td class="game-card">
+                        <img class="game-card-img" src="images/3.jpg" alt="cake3">
+                    </td>
+                    <td class="game-card">
+                        <img class="game-card-img" src="images/4.jpg" alt="cake4">
+                    </td>
+                </tr>
+                <tr class="game-grid-row">
+                  <td class="game-card">
+                      <img class="game-card-img" src="images/5.jpg" alt="cake5">
+                  </td>
+                  <td class="game-card">
+                      <img class="game-card-img" src="images/6.jpg" alt="cake6">
+                  </td>
+                  <td class="game-card">
+                      <img class="game-card-img" src="images/7.jpg" alt="cake7">
+                  </td>
+                  <td class="game-card">
+                      <img class="game-card-img" src="images/8.jpg" alt="cake8">
+                  </td>
+              </tr>
+              <tr class="game-grid-row">
+                <td class="game-card">
+                    <img class="game-card-img" src="images/1.jpg" alt="cake1">
+                </td>
+                <td class="game-card">
+                    <img class="game-card-img" src="images/2.jpg" alt="cake2">
+                </td>
+                <td class="game-card">
+                    <img class="game-card-img" src="images/3.jpg" alt="cake2">
+                </td>
+                <td class="game-card">
+                    <img class="game-card-img" src="images/4.jpg" alt="cake1">
+                </td>
+            </tr>
+            <tr class="game-grid-row">
+                <td class="game-card">
+                    <img class="game-card-img" src="images/5.jpg" alt="cake5">
+                </td>
+                <td class="game-card">
+                    <img class="game-card-img" src="images/6.jpg" alt="cake6">
+                </td>
+                <td class="game-card">
+                    <img class="game-card-img" src="images/7.jpg" alt="cake7">
+                </td>
+                <td class="game-card">
+                    <img class="game-card-img" src="images/8.jpg" alt="cake8">
+                </td>
+            </tr>
+            </tbody>               
+        </table>
+        <div class="restart-button-div">
+            <button class="restart-button brown-button" id="restartButton" onClick="startGame()">Restart ↻</button>
+        </div>
+    </section>
+    <div class="replay">
+        <button id="btn">
+            Replay
+        </button>
+        <button id="btn">
+            Play
+        </button>
+    </div>
+    <style>
+body{
+    background-color: whitesmoke;
+    width: 100%;
+    height: auto;
+}
+.replay{
+    position: absolute;
+    width: 1100px;
+    height: 100px;
+    background: black;
+}    
+.main{
+    background-color: #383D1E;
+    width: 1100px;
+    height: auto;
+    box-shadow: 0px 0px 4px black;
+    margin-left: 100px;
+}
+
+.header p{
+    font-size: bold;
+    font-size: 34px;
+}
+.header span{
+    position: absolute;
+    margin-left: 500px;
+    font-size: 34px;
+    bottom: 550px;
+}
+.header img{
+    cursor: pointer;
+    position: absolute;
+    width: 70px;
+    height: 50px;
+    margin-left: 1000px;
+    bottom: 540px;
+}
+.header ul{
+    position: absolute;
+    margin-left: 980px;
+    text-decoration: none;
+    background:  #F59604;
+    width: 60px;
+    bottom: 339px;
+    height: 170px;
+    border-radius: 10px;
+    /* list-style-type: none; */
+}
+button{
+    width: 200px;
+    height: 50px;
+    background-color: #8B5D00;
+    border: black solid;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px black;
+}
+.restart-button-div{
+    text-align: center;
+    margin-top: 40px;
+}
+.game-board {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #A1887F;
+    border-radius: 0.3em;
+    box-shadow: 0 5px 5px #808080;
+    margin-top: 30px;
+}
+.game-grid-row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.game-card {
+    width: 4.5em;
+    height: 4.5em;
+    /* background-color: #F59604; */
+    background-image: url("images/Hardelz.png");
+    background-size: cover;
+    border-radius: 0.3em;
+    margin: 0.8em;
+    box-shadow: 2px 0 10px #212121;
+    cursor: pointer;
+}
+
+.game-card-img {
+    visibility: hidden;
+    object-fit: cover;
+    width: 4.5em;
+    height: 4.5em;
+}
+.show-img {
+    visibility: visible;
+    animation: animateShowImage 0.4s linear alternate;
+}
+.namer p{
+    text-align: center;
+    margin-top: 180px;
+    font-size: 90px;
+    color: #9FA4A8;
+}
+.name p{
+    text-align: center;
+    margin-left: 80px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #9FA4A8;
+    max-width: 900px;
+    justify-items: stretch;
+}
+    </style>
+
+        
+        <script src="js/index.js"></script>
+</body>
+</html>

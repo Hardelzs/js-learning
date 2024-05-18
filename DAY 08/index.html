@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ternary operator</title>
+    <title>password Generator</title>
+    <link rel="stylesheet" href="inde.css">
 </head>
 <body>
-    <h1>Vari</h1>
-    <h2></h2>
-    <button id="green" onclick=""></button>
+    <div class="main">
+        <h1>Generate a <Span>Strong</Span> and <span>fast password</span></h1>
 
-    <script  src="index.js"></script>
+        <div class="output">
+            <input type="text" id="password" placeholder="Generate">
+            <img src="images/copy.png" onclick="copyPassword()">
+           
+        </div>
+       
+        <button onclick="createPassword()"> <img src="images/flash.png" >Generate password</button>
+        <h2></h2>
+    </div>
+
+
+    <script src="index.js"></script>
 </body>
 </html>

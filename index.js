@@ -1,19 +1,7 @@
-// const apiKey = 'XOprGDFjBE1fko4ZuRI8U6Qu0UtQcMSdsmDVoSC8'; // Replace with your actual API key
+const numbers = [1,2,3,4,5];
+const double = numbers.map(numbers => numbers * 2);
 
-// async function getRandomQuote() {
-//   const url = 'https://quotes.rest/q/random';
-//   const headers = { 'Authorization': `Bearer ${apiKey}` };
 
-//   try {
-//     const response = await fetch(url, { headers });
-//     const data = await response.json();
-//     console.log(data); // This will contain the random quote information
-//   } catch (error) {
-//     console.error(error); // Handle any errors during the API call
-//   }
-// }
-
-// getRandomQuote();
-
+console.log(double);
 
 

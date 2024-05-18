@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memory Matching Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        /* html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+    font-family: monospace, Arial, Helvetica, sans-serif;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+em {
+    font-style: italic;
+} */
+
+/* .brown-button {
+	-moz-box-shadow: 3px 4px 0px 0px #5D4037;
+	-webkit-box-shadow: 3px 4px 0px 0px #5D4037;
+	box-shadow: 3px 4px 0px 0px #5D4037;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #A1887F), color-stop(1, #795548));
+	background: -moz-linear-gradient(top, #A1887F 5%, #795548 100%);
+	background: -webkit-linear-gradient(top, #A1887F 5%, #795548 100%);
+	background: -o-linear-gradient(top, #A1887F 5%, #795548 100%);
+	background: -ms-linear-gradient(top, #A1887F 5%, #795548 100%);
+	background: linear-gradient(to bottom, #A1887F 5%, #795548 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#A1887F', endColorstr='#795548',GradientType=0);
+	background-color: #A1887F;
+	-moz-border-radius: 0.2em;
+	-webkit-border-radius: 0.2em;
+	border-radius: 0.3em;
+	border: 1px solid #6D4C41;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-shadow: 0px 1px 0px #8D6E63;
+} */
+
+/* .brown-button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #795548), color-stop(1, #A1887F));
+	background: -moz-linear-gradient(top, #795548 5%, #A1887F 100%);
+	background: -webkit-linear-gradient(top, #795548 5%, #A1887F 100%);
+	background: -o-linear-gradient(top, #795548 5%, #A1887F 100%);
+	background: -ms-linear-gradient(top, #795548 5%, #A1887F 100%);
+	background: linear-gradient(to bottom, #795548 5%, #A1887F 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#795548', endColorstr='#A1887F',GradientType=0);
+	background-color: #795548;
+}
+
+.brown-button:active {
+	position: relative;
+	top: 0.15em;
+}
+
+.brown-button:focus {
+    outline-color: #D7CCC8;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    padding: 0.6em;
+    text-decoration: underline;
+}
+
+.tool-tip {
+    float: right;
+    margin-top: -3.7em;
+    margin-right: 0.3em;
+    position: relative;
+}
+
+.tool-tip button {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 1.6em;
+    font-weight: 900;
+} */
+
+/* .tool-tip .tool-tip-text {
+    visibility: hidden;
+    width: 5.5em;
+    background-color: #000000;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    top: 2.1em;
+    right: 0;
+    z-index: 1;
+    border-radius: 0.3em;
+}
+
+.tool-tip:hover .tool-tip-text{
+    visibility: visible;
+    right: 2em
+} */
+
+/* .game-status-details {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;   
+    padding: 0.3em;
+    text-align: center;
+}
+
+.rating,
+.move-counter,
+.timer,
+.restart-btn {
+    width: 100%;
+}
+
+.move-counter, .timer {
+    font-size: 1.3em;
+} */
+
+/* .rating {
+    font-size: 1.4em;
+    color: #FFEA00;
+    display: inline;
+}
+
+.star {
+    margin-left: -10px;
+}
+
+.star:first-child{
+    margin-left: 0 !important;;
+}
+
+.restart-btn {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 1.6em;
+    font-weight: 900;
+} */
+
+.game-board {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #A1887F;
+    border-radius: 0.3em;
+    box-shadow: 0 5px 5px #808080;
+}
+
+.game-grid-row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.game-card {
+    width: 4.5em;
+    height: 4.5em;
+    background-color: #212121;
+    border-radius: 0.3em;
+    margin: 0.8em;
+    box-shadow: 2px 0 10px #212121;
+    cursor: pointer;
+}
+
+.game-card-img {
+    visibility: hidden;
+    object-fit: cover;
+    width: 4.5em;
+    height: 4.5em;
+}
+/*
+.restart-button-div {
+    max-width: 50%;
+    margin: 1.5em auto;
+    text-align: center;
+}
+
+.restart-button { 
+	padding: 0.7em 1.4em;
+}
+
+/* Game Over Modal *
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    position: relative;
+    top: 5%;
+    background-color: #EFEBE9;
+    border: 1px solid #808080;
+    border-radius: 0.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation: animateTop 0.4s;
+} */
+
+/* .modal-header {
+    border-bottom: 1px solid #D7CCC8;
+    padding: 0.6em 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 1.6em 0.3em 1em;
+}
+
+.modal-body .message {
+    text-align: center;
+}
+
+.modal-body .message p {
+    margin-bottom: 0.5em;
+} */
+
+/* .game-over-icons {
+    animation: animateIcons 3s linear infinite;
+    position: relative;
+} */
+/* 
+.modal-footer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0 1em 1.5em;
+}
+
+.modal-footer button {
+    padding: 0.3em 1em;
+    width: 50%;
+}
+
+.close {
+    font-size: 2em;
+    float: right;
+    margin-right: 0.8em;
+    margin-top: 0.2em;
+    font-weight: bold;
+    color: #3E2723;
+    position: relative;
+    animation: animateCloseIcon 5s linear 2s infinite;
+}
+
+.close:hover, .close:focus {
+    color: #8D6E63;
+    cursor: pointer;
+} */
+
+/* Page Footer *
+.page-footer {
+    border-top: 1px solid #D7CCC8;
+    padding: 0.5em 0;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.page-footer-link {
+    color: #5D4037;
+    font-weight: 700;
+}
+
+.page-footer-link:hover {
+    color: #212121;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+/* .page-footer-link:active {
+    text-decoration: none;
+}   
+
+.page-footer-link:focus {
+    outline: #A1887F auto 5px;
+}
+
+.page-footer-link:visited {
+    color: #3E2723;
+} */
+
+.show-img {
+    visibility: visible;
+    animation: animateShowImage 0.4s linear alternate;
+}
+
+/* .disabled {
+    pointer-events: none;
+}
+
+.show-modal {
+    display: block;
+} */
+
+/* How to Play Modal *
+.modal-body .help-tips {
+    padding: 0 1.5em;
+}
+
+/* Animations
+@keyframes animateTop {
+    from { top: -300px; opacity: 0; }
+    to { top: 5%; opacity: 1; }
+}
+
+@-moz-keyframes animateTop {
+    from { top: -300px; opacity: 0; }
+    to { top: 5%; opacity: 1; }
+}
+
+@-webkit-keyframes animateTop {
+    from { top: -300px; opacity: 0; }
+    to { top: 5%; opacity: 1; }
+}
+
+@keyframes animateIcons {
+    0% { top: 0em; left: 0em; }
+    40% { top: 0em; left: 0em; }
+    43% { top: -0.7em; left: 0em; }
+    46% { top: 0em; left: -0.3em; }
+    48% { top: -0.4em; left: 0.3em; }
+    50% { top: 0em; left: 0em; }
+    100% { top: 0em; left: 0em; }
+}
+
+@-moz-keyframes animateIcons {
+    0% { top: 0em; left: 0em; }
+    40% { top: 0em; left: 0em; }
+    43% { top: -0.7em; left: 0em; }
+    46% { top: 0em; left: -0.3em; }
+    48% { top: -0.4em; left: 0.3em; }
+    50% { top: 0em; left: 0em; }
+    100% { top: 0em; left: 0em; }
+}
+
+@-webkit-keyframes animateIcons {
+    0% { top: 0em; left: 0em; }
+    40% { top: 0em; left: 0em; }
+    43% { top: -0.7em; left: 0em; }
+    46% { top: 0em; left: -0.3em; }
+    48% { top: -0.4em; left: 0.3em; }
+    50% { top: 0em; left: 0em; }
+    100% { top: 0em; left: 0em; }
+}
+
+@keyframes animateCloseIcon {
+    0% { top: 0em; }
+    40% { top: 0em; }
+    43% { top: -0.2em; }
+    46% { top: 0em; }
+    48% { top: 0.2em; }
+    50% { top: 0em; }
+    100% { top: 0em; }
+}
+
+@-moz-keyframes animateCloseIcon {
+    0% { top: 0em; }
+    40% { top: 0em; }
+    43% { top: -0.1em; }
+    46% { top: 0em; }
+    48% { top: 0.1em; }
+    50% { top: 0em; }
+    100% { top: 0em; }
+}
+
+@-webkit-keyframes animateCloseIcon {
+    0% { top: 0em; }
+    40% { top: 0em; }
+    43% { top: -0.1em; }
+    46% { top: 0em; }
+    48% { top: 0.1em; }
+    50% { top: 0em; }
+    100% { top: 0em; }
+}
+
+@keyframes animateShowImage {
+    0% { transform: rotateY(90deg); opacity: 0;}
+    100%{ transform: rotateY(0); opacity: 1; }
+}
+
+@-webkit-keyframes animateShowImage {
+    0% { transform: rotateY(90deg); opacity: 0;}
+    100%{ transform: rotateY(0); opacity: 1; }
+}
+
+@-moz-keyframes animateShowImage {
+    0% { transform: rotateY(90deg); opacity: 0;}
+    100%{ transform: rotateY(0); opacity: 1; }
+} */
+
+/* Media Queries *
+@media only screen and (max-width: 600px) {
+    .modal-footer button {
+        padding: 0.3em 0.3em;
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .game-card, .game-card-img {
+        width: 5em;
+        height: 5em;
+    }
+
+    /* How to Play Modal *
+    .modal-body .help-tips {
+        padding: 0 2em;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .game-card, .game-card-img {
+        width: 5.5em;
+        height: 5.5em;
+    }
+
+    /* How to Play Modal *
+    .modal-body .help-tips {
+        padding: 0 2.5em;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .game-status-details {
+        display: block;
+    }
+
+    .rating,
+    .move-counter,
+    .timer,
+    .restart-btn {
+        width: initial;
+    }
+
+    .game-card, .game-card-img {
+        width: 6em;
+        height: 6em;
+    }
+
+    /* How to Play Modal *
+    .modal-body .help-tips {
+        padding: 0 3em;
+    }
+}*/
+    </style>
+    <header>
+        <h1>Memory Game <span></h1>
+        <span class="tool-tip">
+            <button aria-label="how to play" onClick="openHelpModal()">
+                <svg width="40" height="40">
+                    <circle cx="20" cy="20" r="15" stroke-width="2" fill="#000000" />
+                    <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="1em" dy=".4em">❓</text>
+                    ❓
+                </svg>
+            </button>
+            <span class="tool-tip-text">How to Play</span>
+        </span>
+    </header>
+    <main>
+        <section>
+            <div class="game-status-details">
+                <div class="rating">
+                    <span class="star">🌟</span>
+                    <span class="star">🌟</span>
+                    <span class="star">🌟</span>
+                    <span class="star">🌟</span>
+                    <span class="star">🌟</span>
+                </div>
+                <span class="move-counter" id="moveCounter"></span>
+                <span class="timer" id="timer">0 mins 0 secs</span>
+                <button class="restart-btn" id="restartBtn" onClick="startGame()" aria-label="restart game">↻</button>
+            </div> 
+            <table class="game-board">
+                <tbody class="game-grid">
+                    <tr class="game-grid-row">
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/1.jpg" alt="cake1">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/2.jpg" alt="cake2">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/3.jpg" alt="cake3">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/4.jpg" alt="cake4">
+                        </td>
+                    </tr>
+                    <tr class="game-grid-row">
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/5.jpg" alt="cake5">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/6.jpg" alt="cake6">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/7.jpg" alt="cake7">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/8.jpg" alt="cake8">
+                        </td>
+                    </tr>
+                    <tr class="game-grid-row">
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/1.jpg" alt="cake1">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/2.jpg" alt="cake2">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/3.jpg" alt="cake3">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/4.jpg" alt="cake4">
+                        </td>
+                    </tr>
+                    <tr class="game-grid-row">
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/5.jpg" alt="cake5">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/6.jpg" alt="cake6">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/7.jpg" alt="cake7">
+                        </td>
+                        <td class="game-card">
+                            <img class="game-card-img" src="img/8.jpg" alt="cake8">
+                        </td>
+                    </tr>
+                </tbody>               
+            </table>
+            <div class="restart-button-div">
+                <button class="restart-button brown-button" id="restartButton" onClick="startGame()">Restart ↻</button>
+            </div>
+        </section>
+<!--         
+        <!--Modal on game over -
+        <div class="modal" id="gameOverModal">
+            <div class="modal-content">
+                <span aria-label="close" role="button" class="close" id="closeModal">&times;</span>
+                <div class="modal-header">
+                    <h2>Game Over</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="message">
+                        <p>Congratulations! <span class="game-over-icons">🎊 🎊 🎊</span> You successfully completed the game. <span class="game-over-icons" style="animation-delay: 0.2s">🎉 🎉 🎉</span></p>
+                        <p>You completed the game using <span id="totalGameMoves"></span> moves
+                            <br>in <span id="totalGameTime"></span>
+                        </p>
+                        <p>Your rating is: <span id="finalStarRating"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="brown-button" onClick="playAgain()">Play Again &nbsp;😀</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal to display Game Instructions --
+        <div class="modal" id="helpModal">
+            <div class="modal-content">
+                <span aria-label="close" role="button" class="close" onClick="closeHelpModal()">&times;</span>
+                <div class="modal-header">
+                    <h2>How to Play</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="help-tips">
+                        <p>This is a Matching Game used to test your memory retention abilities</p>
+                        <p>The game consists of:</p>
+                        <ul>
+                            <li>&diams; A game board with 16 cards - 8 matching pairs of cards</li>
+                            <li>&diams; A game status indicator which consists of :
+                                <ul>
+                                    <li>&diamond; A rating indicator - A list of stars which indicates your rating based on the number of your moves.</li>
+                                    <li>&diamond; A move counter - Indicates the number of moves you've made.</li>
+                                    <li>&diamond; A timer - Indicates the total number of time you take to match all cards.</li>
+                                    <li>&diamond; A restart button.</li>
+                                </ul>
+                            </li>
+                            <li>&diams; A larger restart button.</li>
+                        </ul>
+                        <p>When the page loads the game starts.</p>
+                        <p>All the 8 pairs of cards i.e 16 cards are flashed</p>
+                        <p>How to play:</p>
+                        <ul>
+                            <li>&bullet; Click on a black square to reveal the card</li>
+                            <li>&bullet; Click on a second black square to reveal the card
+                                <ul>
+                                    <li>a. If the two cards match, the cards stay revealed.</li>
+                                    <li>b. If there is no match, the cards are hidden and you can click another pair.</li>
+                                </ul>
+                            </li>
+                            <li>&bullet; You can click either of the restart buttons <em>↻</em> or <em>Restart ↻</em> at any point in time to start all over.</li>
+                            <li>&bullet; When you have correctly matched all 8 pairs of cards, the game ends and your total game time, total number of moves and rating will be displayed.</li>
+                            <li>&bullet; You can click the <em>Play Again</em> in the modal that pops up to start a new game.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="brown-button" onClick="closeHelpModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="page-footer">
+            <p>Made with
+                <span aria-label="love" style="color:#D81B60;">❤</span> by
+                <a href="https://adamichelle.github.io" class="page-footer-link">Aniuchi Adaobi</a>
+                <span aria-label="copyright">&COPY;</span> 2019.
+            </p>
+        </div>
+    </footer> -->
+    <script src="main.js"></script>
+    <noscript>Oops!!! Sorry, you cannot play this game. Your broswer does not support Javascript.</noscript>
+</body>
+<script>
+    //Show Instructions
+const helpModal = document.getElementById('helpModal');
+function openHelpModal() {
+    helpModal.classList.add('show-modal');
+}
+
+function closeHelpModal() {
+    helpModal.classList.remove('show-modal');
+}
+
+// Main Game Play
+let cardElements = document.getElementsByClassName('game-card');
+let cardElementsArray = [...cardElements];
+let imgElements = document.getElementsByClassName('game-card-img');
+let imgElementsArray = [...imgElements];
+let starElements = document.getElementsByClassName('star');
+let starElementsArray = [...starElements];
+let counter = document.getElementById('moveCounter');
+let timer = document.getElementById('timer');
+let modalElement = document.getElementById('gameOverModal');
+let totalGameMovesElement = document.getElementById('totalGameMoves');
+let totalGameTimeElement = document.getElementById('totalGameTime');
+let finalStarRatingElement = document.getElementById('finalStarRating');
+let closeModalIcon = document.getElementById('closeModal');
+let openedCards = [];
+let matchedCards =  [];
+let moves;
+let second = 0,
+    minute = 0,
+    hour = 0,
+    interval,
+    totalGameTime,
+    starRating;
+
+function shuffle(array) {
+    let currentIndex = array.length,
+        temporaryValue,
+        randomIndex;
+
+    while (currentIndex !==0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+function startGame() {
+    //shuffle cards
+    let shuffledImages = shuffle(imgElementsArray);
+
+
+    for(i=0; i<shuffledImages.length; i++) {
+        //remove all images from previous games from each card (if any)
+        cardElements[i].innerHTML = "";
+
+        //add the shuffled images to each card
+        cardElements[i].appendChild(shuffledImages[i]);
+        cardElements[i].type = `${shuffledImages[i].alt}`;
+
+        //remove all extra classes for game play
+        cardElements[i].classList.remove("show", "open", "match", "disabled");
+        cardElements[i].children[0].classList.remove("show-img");
+    }
+
+    //listen for events on the cards
+    for(let i = 0; i < cardElementsArray.length; i++) {
+        cardElementsArray[i].addEventListener("click", displayCard)
+    }
+
+    //when game starts show all the cards for a split second
+    flashCards();
+
+    //reset moves
+    moves = 0;
+    counter.innerText = `${moves} move(s)`;
+
+    //reset star rating
+    for(let i=0; i<starElementsArray.length; i++) {
+        starElementsArray[i].style.opacity = 1;
+    }
+
+    //Reset Timer on game reset
+    timer.innerHTML = '0 mins 0 secs';
+    clearInterval(interval);
+}
+
+function flashCards() {
+    for(i=0; i<cardElements.length; i++) {
+        cardElements[i].children[0].classList.add("show-img")
+    }
+    setTimeout(function(){
+        for(i=0; i<cardElements.length; i++) {
+            cardElements[i].children[0].classList.remove("show-img")
+        }
+    }, 1000)
+}
+
+function displayCard() {
+    this.children[0].classList.toggle('show-img');
+    this.classList.toggle("open");
+    this.classList.toggle("show");
+    this.classList.toggle("disabled");
+    cardOpen(this);
+}
+
+function cardOpen(card) {
+    openedCards.push(card);
+    let len = openedCards.length;
+    if(len === 2) {
+        moveCounter();
+        if(openedCards[0].type === openedCards[1].type) {
+            matched();
+        } else {
+            unmatched();
+        }
+    }
+}
+
+function matched() {
+    openedCards[0].classList.add("match");
+    openedCards[1].classList.add("match");
+    openedCards[0].classList.remove("show", "open");
+    openedCards[1].classList.remove("show", "open");
+    matchedCards.push(openedCards[0]);
+    matchedCards.push(openedCards[1]);
+    openedCards = [];
+    if(matchedCards.length == 16) {
+        endGame();
+    }
+}
+
+function unmatched() {
+    openedCards[0].classList.add("unmatched");
+    openedCards[1].classList.add("unmatched");
+    disable();
+    setTimeout(function() {
+        openedCards[0].classList.remove("show", "open", "unmatched");
+        openedCards[1].classList.remove("show", "open", "unmatched");
+        openedCards[0].children[0].classList.remove('show-img');
+        openedCards[1].children[0].classList.remove('show-img');
+        enable();
+        openedCards = [];
+        
+    }, 1100)
+}
+
+function disable() {
+    cardElementsArray.filter((card, i, cardElementsArray) => {
+        card.classList.add('disabled');
+    })
+}
+
+function enable() {
+    cardElementsArray.filter((card, i, cardElementsArray) => {
+        card.classList.remove('disabled');
+        for(let i=0; i<matchedCards.length; i++) {
+            matchedCards[i].classList.add('disabled');
+        }
+    })
+}
+
+function moveCounter() {
+    moves++;
+    counter.innerHTML = `${moves} move(s)`;
+
+    if(moves == 1) {
+        second = 0;
+        minute = 0;
+        hour = 0;
+        startTimer();
+    }
+
+    //setting rating based on moves
+    if(moves > 8 && moves <= 12) {
+        for(let i=0; i<5; i++) {
+            starElementsArray[i].opacity = 1; 
+        }
+    } else if(moves > 12 && moves <= 16) {
+        for(let i=0; i<5; i++) {
+            if(i > 3) {
+                starElementsArray[i].style.opacity = 0.1;
+            }
+        }
+    } else if(moves > 16 && moves <= 20) {
+        for(let i=0; i<5; i++) {
+            if(i > 2) {
+                starElementsArray[i].style.opacity = 0.1;
+            }
+        }
+    } else if(moves > 20 && moves <= 24) {
+        for(let i=0; i<5; i++) {
+            if(i > 1) {
+                starElementsArray[i].style.opacity = 0.1;
+            }
+        }
+    } else if(moves > 24){
+        for(let i=0; i<5; i++) {
+            if(i > 0) {
+                starElementsArray[i].style.opacity = 0.1;
+            }
+        }
+    }
+}
+
+function startTimer() {
+    interval = setInterval(function(){
+        timer.innerHTML = `${minute} mins ${second} secs`;
+        second++;
+        if(second == 60) {
+            minute++;
+            second = 0;
+        }
+        if(minute == 60) {
+            hour++;
+            minute = 0;
+        }
+    }, 1000)
+}
+
+function endGame() {
+    clearInterval(interval);
+    totalGameTime = timer.innerHTML;
+    starRating = document.querySelector('.rating').innerHTML;
+
+    //show modal on game end
+    modalElement.classList.add("show-modal");
+    
+    //show totalGameTime, moves and finalStarRating in Modal
+    totalGameTimeElement.innerHTML = totalGameTime;
+    totalGameMovesElement.innerHTML = moves;
+    finalStarRatingElement.innerHTML = starRating;
+
+    matchedCards = [];
+    closeModal();
+}
+
+function closeModal() {
+    closeModalIcon.addEventListener("click", function() {
+        modalElement.classList.remove("show-modal");
+        startGame();
+    })
+}
+
+function playAgain() {
+    modalElement.classList.remove("show-modal");
+    startGame();
+}
+
+// wait for some milliseconds before game starts
+window.onload = function () {
+    setTimeout(function() {
+        startGame()
+    }, 1200);
+}
+</script>
+</html>

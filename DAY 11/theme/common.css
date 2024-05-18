@@ -1,0 +1,105 @@
+body{
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+.everybody{
+  background-color: white;
+  width: 800px;
+  bottom: 120px;
+  height: auto;
+  margin-left: 250px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.img {
+    position: relative; /* Sets the container for relative positioning */
+    max-width: 600px;
+    height: 600px;
+    background-color: #FFB330;
+    margin-left: 89px;
+  }
+  .upperHand{
+    color: #696e72;
+    font-size: bold;
+    font-size: 18px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .upperHand img{
+    /* position: absolute; */
+    width: 50px;
+    height: 40px;
+    margin-bottom: -50px;
+    margin-left: 90px;
+  }
+  .upperHand p {
+    margin-left: 140px;
+    /* background-color: #696e72; */
+  }
+  
+  .img img {
+    position: absolute;
+    max-width: 300px;
+    height: 180px;
+    margin-top: 210px;
+    margin-left: 150px;
+  }
+  .text-overlay {
+    position: absolute;
+    top: 57%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    color: black; 
+    font-size: 13px;
+  }
+  .text-overlay button img {
+    margin-left: 61px;
+    width: 100px;
+    cursor: pointer;
+  }
+  .text-overlay span{
+    position: absolute;
+    color: white;
+    bottom: -2px;
+    right: 10px;
+    font-size: large;
+    cursor: pointer;
+  }
+  .text-overlay input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+    width: 120px;
+    height: 10px;
+    margin-right: 60px;
+  }
+  
+  .text-overlay input:focus {
+    border: 1px solid yellow;
+  }
+  .text-overlay button{
+    position: absolute;
+    width: 79px;
+    height: 25px;
+    margin-top: 40px;
+    margin-left: -200px;
+  }
+  .text-overlay button img{
+    position: absolute;
+    right: -8px;
+    bottom: -3px;
+    width: 90px;
+  }
+  #popup{
+    display: none;
+    background-color: yellow;
+    position: absolute;
+    width: 290px;
+    height: 130px;
+    bottom: 20px;
+    left: -43px;
+    transition: -5s;
+  }
+  #popup::before{
+    transition: 4s;
+  }

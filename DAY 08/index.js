@@ -1,16 +1,37 @@
-// 'let carName = "Variables"
-// document.getElementById('h1').innerHTML = carName;'
+ const passwordBox = document.getElementById('password')
+ const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+ const number = "0123456789";
+ const symbol = "!@#$%^&*()_+{}|':;><'?|";
+ const length = 12;
+ const allChars = upperCase + lowerCase + number + symbol;
 
 
+ function createPassword () {
+     let password = ""
+     password += upperCase[Math.floor(Math.random() * upperCase.length)];
+     password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+     password += number[Math.floor(Math.random() * number.length)];
+     password += symbol[Math.floor(Math.random() *symbol.length)];
 
-const green = document.getElementById('green')
-function showNotes(){
-    let nameCar = "totyota"
-    schoolName = "DU"
-}
-green.addEventListener("click", () => {
-    let allMad = "Agaga"
-    document.getElementById(h2).innerHTML = allMad
-});
+     while(length > password.length){
+         password += allChars[Math.floor(Math.random() * allChars.length)];
+     }
+     passwordBox.value = password;
+ }
 
+ function copyPassword() {
+    passwordBox.select();
+    document.execCommand("copy");
+  
+    const h2Element = document.querySelector('h2');
+  
+    
+    h2Element.innerHTML = "copied✔";
+    setTimeout(() => {
+      h2Element.innerHTML = ""; 
+    }, 3000); 
+  }
+ createPassword();
+  
 
