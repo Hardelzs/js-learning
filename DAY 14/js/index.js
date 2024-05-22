@@ -22,3 +22,5 @@ function multiplyIt(value) {
 }
 
 console.log(number1);
+
+
