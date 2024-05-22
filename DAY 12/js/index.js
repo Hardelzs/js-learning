@@ -1,50 +1,82 @@
 const settingsIcon = document.getElementById('image');
+
 const dropdownMenu = document.getElementById('dropdownMenu');
+
 const tiles = document.querySelectorAll('.tile');
+
 const tile1 = document.getElementById('tile1')
+
 const tile2 = document.getElementById('tile2')
+
 const tile3 = document.getElementById('tile3')
 
+
 settingsIcon.addEventListener('click', () => {
+
   dropdownMenu.classList.toggle('show'); 
+
 });
 
 
 tiles.forEach(tile => {
+
   tile.addEventListener('click', () => {
+
     tile.classList.toggle('open');
-  });z
+
+  });
   
 
 })
 
    //Show Instructions
    const helpModal = document.getElementById('helpModal');
+
    function openHelpModal() {
+
        helpModal.classList.add('show-modal');
+
    }
    
    function closeHelpModal() {
+
        helpModal.classList.remove('show-modal');
+
    }
    
    // Main Game Play
    let cardElements = document.getElementsByClassName('game-card');
+
    let cardElementsArray = [...cardElements];
+
    let imgElements = document.getElementsByClassName('game-card-img');
+
    let imgElementsArray = [...imgElements];
+
    let starElements = document.getElementsByClassName('star');
+
    let starElementsArray = [...starElements];
+
    let counter = document.getElementById('moveCounter');
+
    let timer = document.getElementById('timer');
+
    let modalElement = document.getElementById('gameOverModal');
+
    let totalGameMovesElement = document.getElementById('totalGameMoves');
+
    let totalGameTimeElement = document.getElementById('totalGameTime');
+
    let finalStarRatingElement = document.getElementById('finalStarRating');
+
    let closeModalIcon = document.getElementById('closeModal');
+
    let openedCards = [];
+
    let matchedCards =  [];
+
    let moves;
+   
    let second = 0,
        minute = 0,
        hour = 0,
@@ -148,7 +180,7 @@ tiles.forEach(tile => {
        matchedCards.push(openedCards[0]);
        matchedCards.push(openedCards[1]);
        openedCards = [];
-       if(matchedCards.length == 4) {
+       if(matchedCards.length == cardElementsArray.length) {
            endGame();
        }
    }
@@ -214,8 +246,8 @@ tiles.forEach(tile => {
     //    totalGameTimeElement.innerHTML = totalGameTime;
     //    totalGameMovesElement.innerHTML = moves;
     //    finalStarRatingElement.innerHTML = starRating;
-   
-    //    matchedCards = [];
+      document.querySelector('.theNation').style.display = 'block';
+    //   matchedCards = [];
        startGame();
    }
    

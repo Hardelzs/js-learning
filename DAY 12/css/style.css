@@ -156,3 +156,6 @@ button{
     position: absolute;
     text-align: center;
 }
+.theNation{
+    display: none;
+}
