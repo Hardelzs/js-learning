@@ -1,19 +1,7 @@
-const number  =  [ 40, 1, 2, 3, 4, 5];
+// javascript suppory different kinds of loops
 
-let txt = "";
-number.forEach(myFunction);
-
-function myFunction(value,){
-    txt += value + "\n";
-}
-// console.log(txt);
-
-
-const static  = [15, 16, 17, 18, 19]
-const now = static.map(myFunction)
-
-function myFunction(value){
-    return value * 2;
-}
-
-console.log(now);
+// for - loops through a block of code a number of times
+// for/in - loops through the properties of an object
+// for/of - loops through the values of an iterable object
+// while - loops through a block of code while a specified condition is true
+// do/while - also loops through a block of code while a specified condition is true
