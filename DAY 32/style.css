@@ -1,0 +1,77 @@
+body{
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.blur{
+    background-image: url('images/highWay.jpeg');
+    background-color: red;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+.main{
+    background: #d5d3d6;
+    width: 370px;
+    height: 900px;
+    margin-left: 500px;
+
+}
+.img{
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    margin-right: 405px;
+    top: 20px;
+}
+.player{
+    position: absolute;
+    width: 350px;
+    height: auto;
+    margin-left: 10px;
+    background: black;
+    margin-top: 370px;
+}
+.artist h3{
+    color: white;
+    text-align: center;
+}
+.artist h6{
+    background-color: #3c3c3c;
+    margin-left: 120px;
+    width: 110px;
+    height: 2px;
+}
+.artist h5{
+    background-color: #3c3c3c;
+    width: 350px;
+    height: 3px;
+}
+.artist h4{
+    color: white;
+    text-align: center;
+}
+button{
+    margin-left: 230px;
+    width: 90px;
+    height: 35px;
+    border-radius: 7px;
+    border: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.click{
+    position: absolute;
+    width: 18px;
+    height: 10px;
+    top: 150px;
+    right: 84px;
+}

@@ -1,0 +1,53 @@
+.main{
+    text-align: center;
+    margin-top: 140px;
+    font-weight: 500;
+    font-size: 30px;
+}
+.read{
+    text-align: center;
+    font-size: 70px;
+}
+.btn{
+    text-align: center;
+    margin-top: 40px;
+}
+.creat{
+    background-color: red;
+    width:90px;
+    height: 30px;
+    cursor: pointer;
+}
+.destroy{
+    background-color: green;
+    width:90px;
+    height: 30px;
+    margin-left: 14px;
+    cursor: pointer;
+}
+.re-create{
+    background-color:yellow;
+    width:90px;
+    height: 30px;
+    margin-left: 14px;
+    cursor: pointer;
+}
+.mk-link {
+    position: fixed;
+    bottom: 4rem;
+    cursor: pointer;
+    margin-left: 600px;
+  }
+  
+  .hardelz {
+    width: 30px;
+    height: 30px;
+    margin-right: 130px;
+  }
+  .press{
+    width: 300px;
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 10px;
+  }
+
